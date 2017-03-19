@@ -12,11 +12,10 @@ dependencies:
 - pandas
 - datashader
 - xarray
-- sklearn
-
 - pip:
   - py3-ortools
   - folium
   - cufflinks
   - plotly
+  - sklearn
 
