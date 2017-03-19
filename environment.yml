@@ -1,0 +1,23 @@
+name: intro
+channels:
+- conda-forge
+- bokeh
+- menpo
+- defaults
+dependencies:
+- python=3.5
+- numpy
+- bokeh
+- matplotlib=2.0
+- pandas
+- plotly
+- cufflinks
+- datashader
+- xarray
+- sklearn
+
+- pip:
+  - py3-ortools
+  - folium
+
+
