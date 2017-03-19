@@ -6,3 +6,12 @@ cufflinks
 py3-ortools
 sklearn
 numba
+datashape
+odo
+pillow
+toolz
+xarray
+networkx
+datashader
+dask
+folium
