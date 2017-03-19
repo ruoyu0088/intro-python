@@ -1,0 +1,9 @@
+numpy
+matplotlib
+pandas
+plotly
+cufflinks
+py3-ortools
+sklearn
+numba
+datashader
