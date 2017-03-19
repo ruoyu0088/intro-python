@@ -10,8 +10,6 @@ dependencies:
 - bokeh
 - matplotlib=2.0
 - pandas
-- plotly
-- cufflinks
 - datashader
 - xarray
 - sklearn
@@ -19,5 +17,6 @@ dependencies:
 - pip:
   - py3-ortools
   - folium
-
+  - cufflinks
+  - plotly
 
