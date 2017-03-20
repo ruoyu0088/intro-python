@@ -23,3 +23,65 @@ def init_plotly_online_mode():
     });
     """
     display_javascript(jscode, raw=True)
+
+
+def sudoku_to_table(sudoku, highlights):
+    import io
+    f = io.StringIO()
+    f.write("""
+    <style>
+    table.sudoku span{
+    color:#aaaaaa;
+    }
+
+    table.sudoku td{
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    font-size: 20px;
+    }
+
+    table.sudoku tr.row0 td,
+    table.sudoku tr.row3 td,
+    table.sudoku tr.row6 td
+    {
+    border-top:2px solid;
+    }
+
+    table.sudoku tr.row8 td{
+    border-bottom:2px solid;
+    }
+
+    table.sudoku td.col0,
+    table.sudoku td.col3,
+    table.sudoku td.col6{
+    border-left:2px solid;
+    }
+
+    table.sudoku td.col8{
+    border-right:2px solid;
+    }
+
+    table.sudoku .highlight{
+    color: black;
+    }
+    </style>
+    """)
+    f.write('<table class="sudoku">')
+    for i in range(sudoku.shape[0]):
+        f.write('<tr class="row{}">'.format(i))
+        for j in range(sudoku.shape[1]):
+            v = sudoku[i, j]
+            t = " " if v == 0 else str(v)
+            highlight = "" if (i, j) in highlights else "highlight"
+            f.write('<td class="col{j}"><span class="{highlight}">{t}</span></td>'.format(
+                j=j, t=t, highlight=highlight))
+        f.write("</tr>")
+    f.write("</table>")
+    return f.getvalue()
+
+
+def display_sudoku(sudoku, highlights=[]):
+    from IPython.display import display_html
+    html = sudoku_to_table(sudoku, highlights)
+    display_html(html, raw=True)
