@@ -85,3 +85,34 @@ def display_sudoku(sudoku, highlights=[]):
     from IPython.display import display_html
     html = sudoku_to_table(sudoku, highlights)
     display_html(html, raw=True)
+
+
+def mine_to_table(mines):
+    import io
+    f = io.StringIO()
+    f.write("""
+    <style>
+    table.mine td{
+    width: 20px;
+    height:20px;
+    text-align: center;
+    padding: 1px;
+    }
+    </style>
+    """)
+    f.write('<table class="mine">')
+    for i in range(mines.shape[0]):
+        f.write('<tr class="row{}">'.format(i))
+        for j in range(mines.shape[1]):
+            v = mines[i, j]
+            f.write('<td class="col{j}">{v}</td>'.format(
+                j=j, v=v))
+        f.write("</tr>")
+    f.write("</table>")
+    return f.getvalue()
+
+
+def display_mine(mine):
+    from IPython.display import display_html
+    html = mine_to_table(mine)
+    display_html(html, raw=True)
